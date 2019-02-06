@@ -6,37 +6,53 @@ package sml;
  * @author ...
  */
 public abstract class Instruction {
-  protected String label;
-  protected String opcode;
+    private String label;
+    private String opcode;
 
-  /**
-   * Constructor: an instruction with label l and opcode op
-   * (op must be an operation of the language)
-   *
-   * @param l label
-   * @param op operand
-   */
-  public Instruction(String l, String op) {
-    this.label = l;
-    this.opcode = op;
-  }
+    /**
+     * Constructor: an instruction with label l and opcode op
+     * (op must be an operation of the language)
+     *
+     * @param l  label
+     * @param op operand
+     */
+    public Instruction(String l, String op) {
+        setLabel(l);
+        setOpcode(op);
+    }
 
-  // =
+    protected final String getLabel() {
+        return label;
+    }
 
-  /**
-   * the representation "label: opcode" of this Instruction
-   *
-   * @return "label: opcode" of this Instruction
-   */
-  @Override
-  public String toString() {
-    return label + ": " + opcode;
-  }
+    protected final void setLabel(String lab) {
+        this.label = lab;
+    }
 
-  /**
-   * Execute this instruction on machine m.
-   *
-   * @param m the machine in which to execute the instruction.
-   */
-  public abstract void execute(Machine m);
+    protected final String getOpcode() {
+        return opcode;
+    }
+
+    protected final void setOpcode(String op) {
+        this.opcode = op;
+    }
+
+    // =
+
+    /**
+     * the representation "label: opcode" of this Instruction
+     *
+     * @return "label: opcode" of this Instruction
+     */
+    @Override
+    public String toString() {
+        return getLabel() + ": " + getOpcode();
+    }
+
+    /**
+     * Execute this instruction on machine m.
+     *
+     * @param m the machine in which to execute the instruction.
+     */
+    public abstract void execute(Machine m);
 }
