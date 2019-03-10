@@ -23,5 +23,7 @@ public class DivInstructionTest {
 
     @Test
     public void testtoString() {
+        assertEquals("L1: div 2 / 3 to 1", new DivInstruction("L1", 1, 2,3 ).toString());
+
     }
 }
