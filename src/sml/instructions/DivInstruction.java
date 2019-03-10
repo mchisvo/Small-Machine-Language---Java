@@ -18,7 +18,7 @@ public class DivInstruction extends Instruction {
      * @param label of the instruction
      * @param op    the operands
      */
-    public AddInstruction(String label, String op) {
+    public DivInstruction(String label, String op) {
         super(label, op);
     }
 
@@ -28,7 +28,7 @@ public class DivInstruction extends Instruction {
      * @param operator1 the first operand
      * @param operator2 the second operand
      */
-    public AddInstruction(String label, int res, int operator1, int operator2) {
+    public DivInstruction(String label, int res, int operator1, int operator2) {
         this(label, "div");
         this.result = res;
         this.op1 = operator1;
