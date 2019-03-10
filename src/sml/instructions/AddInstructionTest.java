@@ -14,11 +14,16 @@ public class AddInstructionTest {
     @Test
     public void execute() {
         mtest.setRegisters(registers);
-        mtest.getRegisters().setRegister(2,1);
+        mtest.getRegisters().setRegister(2,2);
         mtest.getRegisters().setRegister(3,3);
         Instruction addinstruction = new AddInstruction("L1", 1, 2,3 );
         addinstruction.execute(mtest);
-        assertEquals(4,mtest.getRegisters().getRegister(1));
+        assertEquals(5,mtest.getRegisters().getRegister(1));
+        // check it works with negative numbers
+        mtest.getRegisters().setRegister(3,-3);
+        addinstruction.execute(mtest);
+        assertEquals(-1,mtest.getRegisters().getRegister(1));
+
 
     }
 
