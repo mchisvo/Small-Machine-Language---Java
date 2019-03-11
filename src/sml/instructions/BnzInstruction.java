@@ -14,8 +14,8 @@ public class BnzInstruction extends Instruction {
     private String nextLabel; // the label of the next instruction to be executed
 
     /**
-     * @param lab
-     * @param op
+     * @param label of the instruction
+     * @param op    the operands
      */
     public BnzInstruction(String lab, String op) {
         super(lab, op);
@@ -26,7 +26,7 @@ public class BnzInstruction extends Instruction {
      *
      * @param lab of the instruction
      * @param reg to work with
-     * @param val to load
+     * @param label of the instruction to branch to
      */
     public BnzInstruction(String lab, int reg, String label) {
         super(lab, "bnz");
@@ -44,7 +44,6 @@ public class BnzInstruction extends Instruction {
     public void execute(Machine m) {
         // If the contents of register s1 is not zero
         // find the index of that label and set the pc to that index
-        //m.getRegisters().setRegister(register, nextLabel);
         if(m.getRegisters().getRegister(register) != 0){
            m.setPc(m.getLabels().indexOf(nextLabel));
         }

@@ -3,6 +3,11 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
+/**
+ * This class represents the Multiply instruction from the language.
+ *
+ * @author ...
+ */
 public class MulInstruction extends Instruction {
     private int result;
     private int op1;

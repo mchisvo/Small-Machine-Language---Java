@@ -4,12 +4,11 @@ import sml.Instruction;
 import sml.Machine;
 
 /**
- * This class represents the Sub instruction from the language.
+ * This class represents the Div instruction from the language.
  *
  *  @author ...
  */
 public class DivInstruction extends Instruction {
-
     private int result;
     private int op1;
     private int op2;

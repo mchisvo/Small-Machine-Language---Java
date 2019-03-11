@@ -3,6 +3,11 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
+/**
+ * This class represents the Out instruction from the language.
+ *
+ * @author ...
+ */
 public class OutInstruction extends Instruction {
     private int register;
 
@@ -32,7 +37,7 @@ public class OutInstruction extends Instruction {
      */
     @Override
     public String toString() {
-        return super.toString() + " printing  register" + register;
+        return super.toString() + " printing contents of register" + register;
     }
 
 }
