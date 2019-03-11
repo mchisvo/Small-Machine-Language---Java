@@ -43,7 +43,11 @@ public class BnzInstruction extends Instruction {
     @Override
     public void execute(Machine m) {
         // If the contents of register s1 is not zero
+        // find the index of that label and set the pc to that index
         //m.getRegisters().setRegister(register, nextLabel);
+        if(m.getRegisters().getRegister(register) != 0){
+           m.setPc(m.getLabels().indexOf(nextLabel));
+        }
     }
 
     /**

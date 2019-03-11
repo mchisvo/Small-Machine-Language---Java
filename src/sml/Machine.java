@@ -89,6 +89,7 @@ public final class Machine {
         while (getPc() < getProg().size()) {
             Instruction ins = getProg().get(getPc());
             setPc(getPc() + 1);
+            //System.out.println(getLabels().indexOf("f4"));
             System.out.println("Program counter is at: " + getPc() );
             ins.execute(this);
             System.out.println("Program counter is at: " + getPc() );

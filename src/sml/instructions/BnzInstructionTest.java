@@ -1,24 +1,24 @@
 package sml.instructions;
 
 import org.junit.Test;
-import sml.Instruction;
+import sml.Labels;
 import sml.Machine;
 import sml.Registers;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class BnzInstructionTest {
     private final Machine mtest = new Machine();
     private Registers registers = new Registers();
-    private  List<Instruction> prog = new ArrayList<>();
+    //private  List<Instruction> prog = new ArrayList<>();
+    private Labels labels = new Labels();
 
     @Test
     public void execute() {
-        prog.add(new LinInstruction("L0", 0, 1));
-        prog.add(new LinInstruction("L1", 0, -1));
+        labels.addLabel("L0");
+        labels.addLabel("L1");
+        labels.addLabel("L2");
+        mtest.setLabels(labels);
         registers.setRegister(3, 10); // set register 3 to 10
         mtest.setRegisters(registers); // pass the registers to the machine to use
         // set the pc so we know we went backwards
