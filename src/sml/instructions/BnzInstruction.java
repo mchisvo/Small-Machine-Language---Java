@@ -11,7 +11,7 @@ import sml.Machine;
 public class BnzInstruction extends Instruction {
 
     private int register;
-    private int value;
+    private String nextLabel; // the label of the next instruction to be executed
 
     /**
      * @param lab
@@ -28,10 +28,10 @@ public class BnzInstruction extends Instruction {
      * @param reg to work with
      * @param val to load
      */
-    public BnzInstruction(String lab, int reg, int val) {
-        super(lab, "lin");
+    public BnzInstruction(String lab, int reg, String label) {
+        super(lab, "bnz");
         this.register = reg;
-        this.value = val;
+        this.nextLabel = label;
 
     }
 
@@ -42,7 +42,8 @@ public class BnzInstruction extends Instruction {
      */
     @Override
     public void execute(Machine m) {
-        m.getRegisters().setRegister(register, value);
+        // If the contents of register s1 is not zero
+        //m.getRegisters().setRegister(register, nextLabel);
     }
 
     /**
@@ -52,7 +53,7 @@ public class BnzInstruction extends Instruction {
      */
     @Override
     public String toString() {
-        return super.toString() + " register " + register + " value is " + value;
+        return super.toString() + " register " + register + " value is " + nextLabel;
     }
 
 }

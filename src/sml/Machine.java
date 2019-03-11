@@ -83,13 +83,16 @@ public final class Machine {
         setPc(0);
         setRegisters(new Registers());
         // Lets have a look at whats what
-        for(int i = 0; i < getProg().size(); i++){
-            System.out.println(getProg());
-        }
+//        for(int i = 0; i < getProg().size(); i++){
+//            System.out.println(getProg());
+//        }
         while (getPc() < getProg().size()) {
             Instruction ins = getProg().get(getPc());
             setPc(getPc() + 1);
+            System.out.println("Program counter is at: " + getPc() );
             ins.execute(this);
+            System.out.println("Program counter is at: " + getPc() );
+
         }
     }
 

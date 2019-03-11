@@ -86,6 +86,7 @@ public final class Translator {
         int s2;
         int r;
         int x;
+        String nextLabel;
 
         if (line.equals("")) {
             return null;
