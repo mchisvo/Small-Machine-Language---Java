@@ -1,9 +1,6 @@
 package sml;
 
-import sml.instructions.AddInstruction;
-import sml.instructions.LinInstruction;
-import sml.instructions.MulInstruction;
-import sml.instructions.SubInstruction;
+import sml.instructions.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -82,6 +79,7 @@ public final class Translator {
     // removed. Translate line into an instruction with label label
     // and return the instruction
     public Instruction getInstruction(String label) {
+        //TODO tidy this up
         int s1; // Possible operands of the instruction
         int s2;
         int r;
@@ -113,6 +111,10 @@ public final class Translator {
                 s1 = scanInt();
                 s2 = scanInt();
                 return new MulInstruction(label, r, s1, s2);
+            case "bnz":
+                s1 = scanInt();
+                nextLabel = scan();
+                return new BnzInstruction(label, s1,nextLabel);
         }
 
         // You will have to write code here for the other instructions.
