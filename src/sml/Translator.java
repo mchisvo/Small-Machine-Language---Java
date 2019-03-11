@@ -2,6 +2,8 @@ package sml;
 
 import sml.instructions.AddInstruction;
 import sml.instructions.LinInstruction;
+import sml.instructions.MulInstruction;
+import sml.instructions.SubInstruction;
 
 import java.io.File;
 import java.io.IOException;
@@ -100,6 +102,16 @@ public final class Translator {
                 r = scanInt();
                 s1 = scanInt();
                 return new LinInstruction(label, r, s1);
+            case "sub":
+                r = scanInt();
+                s1 = scanInt();
+                s2 = scanInt(); //TODO should I just negate one of the numbers and use add here? yea i probably should!
+                return new SubInstruction(label, r, s1, s2);
+            case "mul":
+                r = scanInt();
+                s1 = scanInt();
+                s2 = scanInt();
+                return new MulInstruction(label, r, s1, s2);
         }
 
         // You will have to write code here for the other instructions.

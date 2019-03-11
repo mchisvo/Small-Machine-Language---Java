@@ -82,6 +82,10 @@ public final class Machine {
     public void execute() {
         setPc(0);
         setRegisters(new Registers());
+        // Lets have a look at whats what
+        for(int i = 0; i < getProg().size(); i++){
+            System.out.println(getProg());
+        }
         while (getPc() < getProg().size()) {
             Instruction ins = getProg().get(getPc());
             setPc(getPc() + 1);
