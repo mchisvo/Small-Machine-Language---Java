@@ -44,6 +44,7 @@ public class SubInstruction extends Instruction {
         int value1 = m.getRegisters().getRegister(op1);
         int value2 = m.getRegisters().getRegister(op2);
         m.getRegisters().setRegister(result, value1 - value2);
+
     }
 
     /**
