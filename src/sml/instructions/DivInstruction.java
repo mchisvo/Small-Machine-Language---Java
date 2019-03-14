@@ -6,7 +6,7 @@ import sml.Machine;
 /**
  * This class represents the Div instruction from the language.
  *
- *  @author ...
+ * @author ...
  */
 public class DivInstruction extends Instruction {
     private int result;

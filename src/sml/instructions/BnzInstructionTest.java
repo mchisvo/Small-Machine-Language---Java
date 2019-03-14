@@ -23,10 +23,10 @@ public class BnzInstructionTest {
         mtest.setRegisters(registers); // pass the registers to the machine to use
         // set the pc so we know we went backwards
         mtest.setPc(3);
-        BnzInstruction bnzInstruction = new BnzInstruction("L2",3, "L0");
+        BnzInstruction bnzInstruction = new BnzInstruction("L2", 3, "L0");
         // Should set program counter to the index the label is present in.
         bnzInstruction.execute(mtest);
-        assertEquals(0,mtest.getPc());
+        assertEquals(0, mtest.getPc());
 
 
     }

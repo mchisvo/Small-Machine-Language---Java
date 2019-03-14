@@ -14,16 +14,16 @@ public class DivInstructionTest {
     @Test
     public void execute() {
         mtest.setRegisters(registers);
-        mtest.getRegisters().setRegister(2,50);
-        mtest.getRegisters().setRegister(3,5);
-        Instruction divinstruction = new DivInstruction("L1", 1, 2,3 );
+        mtest.getRegisters().setRegister(2, 50);
+        mtest.getRegisters().setRegister(3, 5);
+        Instruction divinstruction = new DivInstruction("L1", 1, 2, 3);
         divinstruction.execute(mtest);
-        assertEquals(10,mtest.getRegisters().getRegister(1));
+        assertEquals(10, mtest.getRegisters().getRegister(1));
     }
 
     @Test
     public void testtoString() {
-        assertEquals("L1: div 2 / 3 to 1", new DivInstruction("L1", 1, 2,3 ).toString());
+        assertEquals("L1: div 2 / 3 to 1", new DivInstruction("L1", 1, 2, 3).toString());
 
     }
 }

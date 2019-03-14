@@ -3,7 +3,7 @@ package sml;
 import java.lang.reflect.Constructor;
 
 
-public class reflectplay{
+public class reflectplay {
     public static void main(String[] args) throws Exception { // Add this so you don't have lots of try catch blocks
         Class instructionClass = Class.forName("AddInstruction"); // need to capitalise the first letter of the operation
         String argz = "L0 1 2 3";
@@ -20,7 +20,7 @@ public class reflectplay{
                 // If its not an int allow string type to be assigned
                 Integer.parseInt(splitArgs[x]);
                 argTypes[x] = int.class;
-            }catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 argTypes[x] = splitArgs[x].getClass();
             }
             System.out.println(splitArgs[x] + " has type " + argTypes[x]);
@@ -32,19 +32,16 @@ public class reflectplay{
 
         // Create object array to pass as arguments
         Object[] objs = new Object[splitArgs.length];
-        for(int i = 0; i < objs.length; i++){
-            if(argTypes[i] == int.class){
+        for (int i = 0; i < objs.length; i++) {
+            if (argTypes[i] == int.class) {
                 objs[i] = Integer.parseInt(splitArgs[i]);
-            }else{
+            } else {
                 objs[i] = splitArgs[i];
             }
         }
         // Now the create an instance of the object
         Instruction ins = (Instruction) insConstructor.newInstance(objs);
         System.out.println(ins);
-
-
-
 
 
     }

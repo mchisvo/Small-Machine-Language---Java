@@ -77,7 +77,7 @@ public final class Translator {
     // line should consist of an MML instruction, with its label already
     // removed. Translate line into an instruction with label label
     // and return the instruction
-    public Instruction getInstruction(String label) throws Exception{
+    public Instruction getInstruction(String label) throws Exception {
         //TODO tidy this up
         InstructionFactory insFactory = new InstructionFactory();
         Instruction instruction = null;
@@ -86,7 +86,7 @@ public final class Translator {
         }
 
         String ins = scan();
-        instruction = insFactory.create(label,line,ins);
+        instruction = insFactory.create(label, line, ins);
         return instruction;
 
     }
