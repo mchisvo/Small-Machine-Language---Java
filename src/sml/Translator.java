@@ -78,17 +78,12 @@ public final class Translator {
     // removed. Translate line into an instruction with label label
     // and return the instruction
     public Instruction getInstruction(String label) throws Exception {
-        //TODO tidy this up
         InstructionFactory insFactory = new InstructionFactory();
-        Instruction instruction = null;
         if (line.equals("")) {
             return null;
         }
-
         String ins = scan();
-        instruction = insFactory.create(label, line, ins);
-        return instruction;
-
+        return insFactory.create(label, line, ins);
     }
 
     /*

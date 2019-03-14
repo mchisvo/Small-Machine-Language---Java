@@ -22,7 +22,7 @@ public final class Machine {
     private List<Instruction> prog;
 
     // The registers of the SML machine
-    private Registers registers;
+    private Registers registers = Registers.getInstance();
 
     // The program counter; it contains the index (in prog) of
     // the next instruction to be executed.

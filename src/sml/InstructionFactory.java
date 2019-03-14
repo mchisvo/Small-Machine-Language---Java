@@ -6,7 +6,6 @@ import java.lang.reflect.InvocationTargetException;
 public class InstructionFactory {
 
     public Instruction create(String label, String line, String ins) throws ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
-
         String instructionClassName = "sml.instructions." + ins.substring(0, 1).toUpperCase() + ins.substring(1) + "Instruction";
         Class instructionClass = Class.forName(instructionClassName);
         String argz = label + line;
