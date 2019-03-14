@@ -22,7 +22,7 @@ public final class Machine {
     private List<Instruction> prog;
 
     // The registers of the SML machine
-    private Registers registers = Registers.getInstance();
+    Registers registers = Registers.getInstance();
 
     // The program counter; it contains the index (in prog) of
     // the next instruction to be executed.
@@ -81,7 +81,7 @@ public final class Machine {
      */
     public void execute() {
         setPc(0);
-        setRegisters(new Registers());
+        setRegisters(registers);
         // Lets have a look at whats what
 //        for(int i = 0; i < getProg().size(); i++){
 //            System.out.println(getProg());

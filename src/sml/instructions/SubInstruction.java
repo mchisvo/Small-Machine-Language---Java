@@ -5,8 +5,8 @@ import sml.Machine;
 
 /**
  * This class represents the Sub instruction from the language.
- * *
- * * @author ...
+ *  *
+ *  * @author ...
  */
 public class SubInstruction extends Instruction {
     private int result;

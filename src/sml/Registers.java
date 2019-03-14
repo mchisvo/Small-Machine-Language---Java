@@ -11,22 +11,26 @@ import java.util.Arrays;
  */
 public final class Registers {
     private static final int NUMBER_OF_REGISTERS = 32;
-    private Registers registers[];
+    private int[] registers;
+    private static Registers singleton = null;
 
     // Constructor: an instance whose registers are set to 0
 
-    private initRegisters() {
+    {
+        registers = new int[NUMBER_OF_REGISTERS];
+    }
+
+    private Registers() {
         for (int i = 0; i != registers.length; i++) {
             registers[i] = 0;
         }
     }
 
-    public static int[] getInstance(){
-        if (registers == null) {
-            registers           (Registers) int[NUMBER_OF_REGISTERS];
+    public static Registers getInstance(){
+        if (singleton == null){
+            singleton = new Registers();
         }
-        return instance;
-    }
+        return singleton;
     }
 
     // Set register i to v.

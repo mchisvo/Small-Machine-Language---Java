@@ -24,8 +24,8 @@ public class BnzInstruction extends Instruction {
     /**
      * Initialise the instruction
      *
-     * @param lab   of the instruction
-     * @param reg   to work with
+     * @param lab of the instruction
+     * @param reg to work with
      * @param label of the instruction to branch to
      */
     public BnzInstruction(String lab, int reg, String label) {
@@ -44,8 +44,8 @@ public class BnzInstruction extends Instruction {
     public void execute(Machine m) {
         // If the contents of register s1 is not zero
         // find the index of that label and set the pc to that index
-        if (m.getRegisters().getRegister(register) != 0) {
-            m.setPc(m.getLabels().indexOf(nextLabel));
+        if(m.getRegisters().getRegister(register) != 0){
+           m.setPc(m.getLabels().indexOf(nextLabel));
         }
     }
 

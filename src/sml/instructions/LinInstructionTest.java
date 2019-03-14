@@ -8,7 +8,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class LinInstructionTest {
     private final Machine mtest = new Machine();
-    private Registers registers = new Registers();
+    private Registers registers =  Registers.getInstance();
 
     @Test
     public void execute() {
@@ -18,9 +18,9 @@ public class LinInstructionTest {
         loadInstruction.execute(mtest);
         loadInstruction2.execute(mtest);
         // Check register 0 is 5
-        assertEquals(5, mtest.getRegisters().getRegister(0));
+        assertEquals(5,mtest.getRegisters().getRegister(0));
         // Check register 31 is 10
-        assertEquals(10, mtest.getRegisters().getRegister(31));
+        assertEquals(10,mtest.getRegisters().getRegister(31));
 
 
     }
