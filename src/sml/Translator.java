@@ -89,7 +89,8 @@ public final class Translator {
         String ins = scan();
         //ins = "add" - need to transform the ins to the actual instruction name
         //String ins = "add";
-        String instructionClassName = ins.substring(0,1).toUpperCase() +  ins.substring(1) + "instruction";
+        String instructionClassName = "sml.instructions." + ins.substring(0,1).toUpperCase() +  ins.substring(1) + "Instruction";
+        System.out.println(instructionClassName);
         Class instructionClass = Class.forName(instructionClassName);
         String argz = line;
         // Split the string into individual arguments
