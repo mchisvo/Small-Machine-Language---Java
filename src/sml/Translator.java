@@ -84,20 +84,14 @@ public final class Translator {
         if (line.equals("")) {
             return null;
         }
-        System.out.println(line);
 
         String ins = scan();
         //ins = "add" - need to transform the ins to the actual instruction name
-        //String ins = "add";
         String instructionClassName = "sml.instructions." + ins.substring(0,1).toUpperCase() +  ins.substring(1) + "Instruction";
-        System.out.println(instructionClassName);
         Class instructionClass = Class.forName(instructionClassName);
         String argz = line;
         // Split the string into individual arguments
         String[] splitArgs = argz.split(" ");
-        // Check we have an array with 4 elements
-        System.out.println(splitArgs.length);
-
         // Create array of types
         Class[] argTypes = new Class[splitArgs.length];
         for (int x = 0; x < splitArgs.length; x++) {
@@ -109,7 +103,6 @@ public final class Translator {
             }catch (NumberFormatException e) {
                 argTypes[x] = splitArgs[x].getClass();
             }
-            System.out.println(splitArgs[x] + " has type " + argTypes[x]);
         }
 
         // Get the required constructor
