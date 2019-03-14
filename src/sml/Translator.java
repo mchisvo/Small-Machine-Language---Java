@@ -52,6 +52,7 @@ public final class Translator {
                 // Store the label in label
                 String label = scan();
 
+
                 if (label.length() > 0) {
                     Instruction ins = getInstruction(label);
                     if (ins != null) {
@@ -89,7 +90,7 @@ public final class Translator {
         //ins = "add" - need to transform the ins to the actual instruction name
         String instructionClassName = "sml.instructions." + ins.substring(0,1).toUpperCase() +  ins.substring(1) + "Instruction";
         Class instructionClass = Class.forName(instructionClassName);
-        String argz = line;
+        String argz = label +line;
         // Split the string into individual arguments
         String[] splitArgs = argz.split(" ");
         // Create array of types
