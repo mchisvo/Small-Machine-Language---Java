@@ -2,6 +2,7 @@ package sml;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -32,7 +33,7 @@ public final class Translator {
     // prog (the program)
     // return "no errors were detected"
 
-    public boolean readAndTranslate(Labels lab, List<Instruction> prog) {
+    public boolean readAndTranslate(Labels lab, List<Instruction> prog) throws Exception {
         try (Scanner sc = new Scanner(new File(fileName))) {
             // Scanner attached to the file chosen by the user
             // The labels of the program being translated
@@ -76,19 +77,55 @@ public final class Translator {
     // line should consist of an MML instruction, with its label already
     // removed. Translate line into an instruction with label label
     // and return the instruction
-    public Instruction getInstruction(String label) {
+    public Instruction getInstruction(String label) throws Exception{
         //TODO tidy this up
 
 
         if (line.equals("")) {
             return null;
         }
+        System.out.println(line);
 
         String ins = scan();
         //ins = "add" - need to transform the ins to the actual instruction name
         //String ins = "add";
-        String inscructionClass = ins.substring(0,1).toUpperCase() +  ins.substring(1) + "Instruction";
-        return null;
+        String instructionClassName = ins.substring(0,1).toUpperCase() +  ins.substring(1) + "instruction";
+        Class instructionClass = Class.forName(instructionClassName);
+        String argz = line;
+        // Split the string into individual arguments
+        String[] splitArgs = argz.split(" ");
+        // Check we have an array with 4 elements
+        System.out.println(splitArgs.length);
+
+        // Create array of types
+        Class[] argTypes = new Class[splitArgs.length];
+        for (int x = 0; x < splitArgs.length; x++) {
+            try {
+                // Check if the input can be parsed to an int, if so assign integertype to the argTypes array
+                // If its not an int allow string type to be assigned
+                Integer.parseInt(splitArgs[x]);
+                argTypes[x] = int.class;
+            }catch (NumberFormatException e) {
+                argTypes[x] = splitArgs[x].getClass();
+            }
+            System.out.println(splitArgs[x] + " has type " + argTypes[x]);
+        }
+
+        // Get the required constructor
+        //throwing no such method exception.
+        Constructor insConstructor = instructionClass.getDeclaredConstructor(argTypes);
+
+        // Create object array to pass as arguments
+        Object[] objs = new Object[splitArgs.length];
+        for(int i = 0; i < objs.length; i++){
+            if(argTypes[i] == int.class){
+                objs[i] = Integer.parseInt(splitArgs[i]);
+            }else{
+                objs[i] = splitArgs[i];
+            }
+        }
+        // Now the create an instance of the object
+        return (Instruction) insConstructor.newInstance(objs);
     }
 
     /*
