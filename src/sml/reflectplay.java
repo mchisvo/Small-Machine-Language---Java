@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 
 public class reflectplay{
     public static void main(String[] args) throws Exception { // Add this so you don't have lots of try catch blocks
-        Class instructionClass = Class.forName("sml.instructions.AddInstruction");
+        Class instructionClass = Class.forName("AddInstruction"); // need to capitalise the first letter of the operation
         String argz = "L0 1 2 3";
         // Split the string into individual arguments
         String[] splitArgs = argz.split(" ");

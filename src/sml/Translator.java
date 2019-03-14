@@ -1,7 +1,5 @@
 package sml;
 
-import sml.instructions.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -80,48 +78,16 @@ public final class Translator {
     // and return the instruction
     public Instruction getInstruction(String label) {
         //TODO tidy this up
-        int s1; // Possible operands of the instruction
-        int s2;
-        int r;
-        int x;
-        String nextLabel;
+
 
         if (line.equals("")) {
             return null;
         }
 
         String ins = scan();
-        switch (ins) {
-            case "add":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new AddInstruction(label, r, s1, s2);
-            case "lin":
-                r = scanInt();
-                s1 = scanInt();
-                return new LinInstruction(label, r, s1);
-            case "sub":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt(); //TODO should I just negate one of the numbers and use add here? yea i probably should!
-                return new SubInstruction(label, r, s1, s2);
-            case "mul":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new MulInstruction(label, r, s1, s2);
-            case "bnz":
-                s1 = scanInt();
-                nextLabel = scan();
-                return new BnzInstruction(label, s1, nextLabel);
-            case "out":
-                r = scanInt();
-                return new OutInstruction(label, r);
-        }
-
-        // You will have to write code here for the other instructions.
-
+        //ins = "add" - need to transform the ins to the actual instruction name
+        //String ins = "add";
+        String inscructionClass = ins.substring(0,1).toUpperCase() +  ins.substring(1) + "Instruction";
         return null;
     }
 
