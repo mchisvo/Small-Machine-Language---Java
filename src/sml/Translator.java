@@ -2,7 +2,6 @@ package sml;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -80,47 +79,16 @@ public final class Translator {
     // and return the instruction
     public Instruction getInstruction(String label) throws Exception{
         //TODO tidy this up
-
-
+        InstructionFactory insFactory = new InstructionFactory();
+        Instruction instruction = null;
         if (line.equals("")) {
             return null;
         }
 
         String ins = scan();
-        //ins = "add" - need to transform the ins to the actual instruction name
-        String instructionClassName = "sml.instructions." + ins.substring(0,1).toUpperCase() +  ins.substring(1) + "Instruction";
-        Class instructionClass = Class.forName(instructionClassName);
-        String argz = label +line;
-        // Split the string into individual arguments
-        String[] splitArgs = argz.split(" ");
-        // Create array of types
-        Class[] argTypes = new Class[splitArgs.length];
-        for (int x = 0; x < splitArgs.length; x++) {
-            try {
-                // Check if the input can be parsed to an int, if so assign integertype to the argTypes array
-                // If its not an int allow string type to be assigned
-                Integer.parseInt(splitArgs[x]);
-                argTypes[x] = int.class;
-            }catch (NumberFormatException e) {
-                argTypes[x] = splitArgs[x].getClass();
-            }
-        }
+        instruction = insFactory.create(label,line,ins);
+        return instruction;
 
-        // Get the required constructor
-        //throwing no such method exception.
-        Constructor insConstructor = instructionClass.getDeclaredConstructor(argTypes);
-
-        // Create object array to pass as arguments
-        Object[] objs = new Object[splitArgs.length];
-        for(int i = 0; i < objs.length; i++){
-            if(argTypes[i] == int.class){
-                objs[i] = Integer.parseInt(splitArgs[i]);
-            }else{
-                objs[i] = splitArgs[i];
-            }
-        }
-        // Now the create an instance of the object
-        return (Instruction) insConstructor.newInstance(objs);
     }
 
     /*
