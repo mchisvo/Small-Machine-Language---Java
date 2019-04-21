@@ -3,6 +3,11 @@ package sml;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Creates instruction classes dynamically using reflection
+ *
+ * @author ...
+ */
 public class InstructionFactory {
 
     public Instruction create(String label, String line, String ins) throws ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
@@ -23,11 +28,9 @@ public class InstructionFactory {
                 argTypes[x] = splitArgs[x].getClass();
             }
         }
-
         // Get the required constructor
         //throwing no such method exception.
         Constructor insConstructor = instructionClass.getDeclaredConstructor(argTypes);
-
         // Create object array to pass as arguments
         Object[] objs = new Object[splitArgs.length];
         for (int i = 0; i < objs.length; i++) {
